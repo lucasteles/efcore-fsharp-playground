@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>fsharp_ef</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="EFCore.FSharp/Converters.fs" />
+    <Compile Include="EFCore.FSharp/ModelBuilderExtensions.fs" />
+    <Compile Include="EFCore.FSharp\DbContextHelpers.fs" />
+    <Compile Include="Contexto.fs" />
+    <Compile Include="Migrations/*.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="EntityFrameworkCore.FSharp" Version="5.0.3-beta002">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.3" />
+  </ItemGroup>
+
+</Project>
