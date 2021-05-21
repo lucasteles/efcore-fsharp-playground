@@ -8,8 +8,12 @@ open System.Linq
 let main argv =
     use ctx = new Context()
 
+    [ctx.Database.EnsureDeleted()
+     ctx.Database.EnsureCreated()]
+    |> ignore
+
     //create person
-    let pessoa = { Id =0; Nome = "Lucas"; Idade = 30; Telefone = None  }
+    let pessoa = { Id=0; Nome = "Lucas"; Idade = 30; Telefone = None  }
 
     // save person
     addEntity ctx pessoa
@@ -25,7 +29,7 @@ let main argv =
 
     query {
         for p in ctx.pessoas do
-        where  (EF.Property(p, "Telefone") <> null) // so sad
+        where (p.Telefone.IsSome && p.Telefone.Value = "42")
         select p.Nome
     }
     |> Seq.iter (printfn "%A")

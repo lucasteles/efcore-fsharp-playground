@@ -2,9 +2,9 @@ module Contexto
 
 open System.ComponentModel.DataAnnotations
 open EntityFrameworkCore.FSharp
+open Translators
 open Microsoft.EntityFrameworkCore
 open EntityFrameworkCore.FSharp.Extensions
-open Microsoft.EntityFrameworkCore.Storage.ValueConversion
 
 [<Literal>]
 let connectionString = "Server=localhost; Database=FooDb; User=sa; Password=Senha@123"
@@ -24,9 +24,9 @@ type Context() =
     member this.Pessoas with get() = this.pessoas and set v = this.pessoas <- v
 
     override _.OnConfiguring options =
-        options.UseSqlServer(connectionString) |> ignore
+        options
+//            .LogTo(fun s -> printfn "%s" s)
+            .UseSqlServer(connectionString, (fun x -> x.UseFSharpTypes() |> ignore)) |> ignore
 
     override _.OnModelCreating builder =
         builder.RegisterOptionTypes()
-
-        ()

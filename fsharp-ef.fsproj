@@ -10,6 +10,7 @@
     <Compile Include="EFCore.FSharp/Converters.fs" />
     <Compile Include="EFCore.FSharp/ModelBuilderExtensions.fs" />
     <Compile Include="EFCore.FSharp\DbContextHelpers.fs" />
+    <Compile Include="Translators.fs" />
     <Compile Include="Contexto.fs" />
     <Compile Include="Migrations/*.fs" />
     <Compile Include="Program.fs" />
