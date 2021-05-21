@@ -19,14 +19,11 @@ type Pessoa = {
 
 type Context() =
     inherit DbContext()
-    
-    [<DefaultValue>] val mutable pessoas : DbSet<Pessoa>
-    member this.Pessoas with get() = this.pessoas and set v = this.pessoas <- v
-
     override _.OnConfiguring options =
         options
 //            .LogTo(fun s -> printfn "%s" s)
             .UseSqlServer(connectionString, (fun x -> x.UseFSharpTypes() |> ignore)) |> ignore
 
     override _.OnModelCreating builder =
+        builder.Entity<Pessoa>() |> ignore
         builder.RegisterOptionTypes()

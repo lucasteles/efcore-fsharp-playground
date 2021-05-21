@@ -43,13 +43,13 @@ type OptionMethodCallTranslatorPlugin(sqlExpressionFactory) =
             methodCallTranslator sqlExpressionFactory
         }
 
-type OptionTypeMapping =
-    inherit StringTypeMapping
-    new(storeType, dbType) = { inherit StringTypeMapping(storeType, dbType) }
-    new(parameters) = { inherit StringTypeMapping(parameters) }
-
-    override _.Clone(parameters: RelationalTypeMapping.RelationalTypeMappingParameters) =
-        OptionTypeMapping(parameters) :> RelationalTypeMapping
+//type OptionTypeMapping =
+//    inherit StringTypeMapping
+//    new(storeType, dbType) = { inherit StringTypeMapping(storeType, dbType) }
+//    new(parameters) = { inherit StringTypeMapping(parameters) }
+//
+//    override _.Clone(parameters: RelationalTypeMapping.RelationalTypeMappingParameters) =
+//        OptionTypeMapping(parameters) :> RelationalTypeMapping
 
 //type OptionRelationalTypeMappingSourcePlugin() =
 //    interface IRelationalTypeMappingSourcePlugin with
