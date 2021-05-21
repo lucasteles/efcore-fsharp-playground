@@ -19,6 +19,11 @@ type Pessoa = {
 
 type Context() =
     inherit DbContext()
+
+// commenting this because is horrible, so I decide to use just context.Set<Entity> instead
+//    [<DefaultValue>] val mutable pessoas : DbSet<Pessoa>
+//    member this.Pessoas with get() = this.pessoas and set v = this.pessoas <- v
+
     override _.OnConfiguring options =
         options
 //            .LogTo(fun s -> printfn "%s" s)
